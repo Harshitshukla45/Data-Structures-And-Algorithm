@@ -1,51 +1,51 @@
 #include<iostream>
 using namespace std;
-class base
-{
+ class base
+ {
   public:
-  int x;
-void display(void){
-  cout<<"give the value of y"<<endl ;
-  cin>>y ;
-  cout<<"value of y is"<<y<<endl ;
-}
- 
+    char name[100];
+    int j ;
+ };
 
-  private:
-  int y;
-  
- 
-  protected:
-  int z;
-} ;
-
- class child : public base 
-{
-	public:
-   void show(void){
-   cout<<"give the value of z"<<endl ;
-  cin>>z ;
-  cout<<"value of z is"<<z<<endl ;
-
-}
-};
-   
 int main()
-{    
-    base obj ;
- cout<<"enter the value of x"<<endl ;
- cin>>obj.x ;
+{    base obj[100] ;
+   int i,p,q,r,s, n;
+   printf("enter the number of the people for their bill\n");
+   scanf("%d",&n);
 
-  cout<<"value of x is"<<obj.x<<endl ;
+   for(i=0;i<n;i++)
+   {
+      cout<<"enter the name of the user:\n"<<endl ;
+      cin>>obj[i].name ;
 
- obj.display() ;
- 
-child cbj ;
+      cout<<"enter the amount of unit he/she used:\n"<<endl ;
+      cin>>obj[i].j ;
+   }
 
- cbj.show() ;
- 
+   cout<<"displaying information.......\n"<<endl;
+
+   for(i=0;i<n;i++)
+   {
+     p = obj[i].j  ;
+
+     if(p<=100)
+     {
+        r=p*60 ;
+     }
+
+    else if(p>=100 && p<=300)
+    {
+        r=p*80 ;
+    }
+
+    else{
+        r=p*90 ;
+    }
+
+    cout<<"bill for "<<obj[i].name<<endl ;
+    cout<<"Rupees:"<<r+50<<endl ;
+   }
+
+    return 0;
 }
-
-
-
 
