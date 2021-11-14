@@ -32,7 +32,9 @@ struct node{
  void display()
  { node *temp=tead;
    while(temp!=NULL)
-   { cout<<" "<<temp->info<<endl ;
+   {  if(temp->next!=NULL)
+      { cout<<" "<<temp->info<<endl ;
+      }
      temp=temp->next;
    }
    
