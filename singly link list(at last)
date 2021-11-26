@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 struct node{
  int info;
@@ -6,85 +6,99 @@ struct node{
  };
  int count=0;
  typedef struct node node;
- node *head =NULL;
- node *tead =NULL;
- void insertatlast(int value)
- { node *temp;
+
+ node* insertatlast(node**head,node*tead,int value)
+ { 
+  
+   node *temp;
    temp=(node*)malloc(sizeof(node));
    temp->info=value;
    temp->next =NULL;
    
-   if(head==NULL)
-   {  head =temp;
+   if(*head==NULL)
+   {  *head =temp;
    }
-   if( count==0)
-   {  tead =temp;
+   
+   if(count==0)
+   { 
+     tead=temp;
      count++;
-     }
-     
+   }
+   
      else
      {
-       head->next=temp;
-       head =temp;
-       }
-       }
+       tead->next=temp;
+       tead=temp;
+     }
+       return tead;
+ }
        
- void display()
- { node *temp=tead;
+ void display(node**head)
+ { 
+   node *temp=*head;
    while(temp!=NULL)
-   {  if(temp->next!=NULL)
-      { cout<<" "<<temp->info<<endl ;
-      }
+   {  
+       cout<<" "<<temp->info<<endl ;
+   
      temp=temp->next;
    }
    
  }
-  int removelast()
+  int removelast(node**head,node*tead)
 {
-   node *temp=tead;
-   for(temp=tead;temp!=NULL;temp = temp->next)
-   {  
-       if(temp==head)
-       {  int a=head->info ;
-           temp =NULL ;
+   node *temp=*head;
+   node*cemp=temp->next;
+  
+     while(cemp!=NULL) 
+      {
+           if(cemp==tead)
+       {  int a=tead->info ;
+          tead=temp;
+          tead->next=NULL;
            return a;
            free(temp);
+           free(cemp);
        }
+       temp=temp->next;
+       cemp=cemp->next;
+   
+       
    }
 }
  
  int main()
- {  int value;
-    cin>>value;
+ { 
+      node *head =NULL;
+      node *tead =NULL; 
+      int value;
+      cin>>value;
     
-    insertatlast(value);
-   
-    cin>>value;
+     tead=insertatlast(&head,tead,value);
+     cin>>value;
     
-    insertatlast(value);
+     tead=insertatlast(&head,tead,value);
+     
    
-   
-    cin>>value;
+     cin>>value;
     
-    insertatlast(value);
+     tead=insertatlast(&head,tead,value);
    
    
-    cin>>value;
+     cin>>value;
     
-    insertatlast(value);
+     tead=insertatlast(&head,tead,value);
    
    
-    cin>>value;
+     cin>>value;
     
-    insertatlast(value);
+     tead=insertatlast(&head,tead,value);
     
-    cout<<"popped element is "<<removelast()<<endl;
+     cout<<"popped element is "<<removelast(&head,tead)<<endl;
    
-    display();
+     display(&head);
    
-    return 0;
+     return 0;
    }
-   
    
    
    
